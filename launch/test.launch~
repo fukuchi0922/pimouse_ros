@@ -1,0 +1,2 @@
+<launch>
+  <node pkg="pimouse_ros" name="buzzer" type="buzzer.py" required="true" />
