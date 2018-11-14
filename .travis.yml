@@ -3,3 +3,6 @@ dist: trusty
 
 script:
   - bash -xve ./test/travis_ros_install.bash
+language: python
+virtualenv:
+  system_site_packages: true
