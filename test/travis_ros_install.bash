@@ -1,13 +1,10 @@
 #!/bin/bash -xve
 
 #required packages
-# python -m pip uninstall pip setuptools
-# apt-get remove python3-pip
-# pip install --upgrade pip
-# pip install catkin_pkg
-# pip install empy
-# pip install pyyaml
-# pip install rospkg
+pip install catkin_pkg
+pip install empy
+pip install pyyaml
+pip install rospkg
 #ros install
 cd ..
 git clone https://github.com/ryuichiueda/ros_setup_scripts_Ubuntu14.04_server.git
