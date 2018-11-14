@@ -1,7 +1,9 @@
 #!/bin/bash -xve
 
 #required packages
-echo success!!
+python -m pip uninstall pip setuptools
+apt-get remove python3-pip
+
 pip install --upgrade pip
 pip install catkin_pkg
 pip install empy
