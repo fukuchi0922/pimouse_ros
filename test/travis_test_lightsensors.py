@@ -50,5 +50,5 @@ class LightsensorTest(unittest.TestCase):
 
 if __name__ '__main__':
     time.sleep(3)
-    # rospy.init_node('travis_test_lightsensors')
-    # rostest.rosrun('pimouse_ros','travis_test_lightsensors',LightsensorTest)
+    rospy.init_node('travis_test_lightsensors')
+    rostest.rosrun('pimouse_ros','travis_test_lightsensors',LightsensorTest)
