@@ -9,3 +9,6 @@ sudo chmod 666 /dev/rtswitch{0,1,2}
 
 sudo touch /dev/rtlightsensor0
 sudo chmod 666 /dev/rtlightsensor0
+
+sudo touch /dev/rtmotor_raw_{r,l}0
+sudo chmod 666 /dev/rtmotor_raw_{r,l}0
