@@ -25,8 +25,8 @@ if __name__ == '__main__':
         try:
             with open(devfile,'r') as f: # opening devfile as reading filename=f
                 data = f.readline().split()  ##readline : Read one line. ##split :split characters
-                data = [ int(e) for e in data] #Convert data(char) to (int) --> write to data 
-                d = LightSensorValues() 
+                data = [ int(e) for e in data] #Convert data(char) to (int) --> write to data
+                d = LightSensorValues()
                 d.right_forward = data[0]
                 d.right_side = data[1]
                 d.left_side = data[2]
@@ -40,5 +40,5 @@ if __name__ == '__main__':
         if f != freq:
             freq = f
             rate = rospy.Rate(freq)
-            
+
         rate.sleep()
