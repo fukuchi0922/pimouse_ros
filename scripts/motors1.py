@@ -6,14 +6,14 @@ from geometry_msgs.msg import Twist
 
 class Motor():
     def __init__(self):
-        if not self.set_power(True): sys.exit(1)
+        if not self.set_power(True): sys.exit(1) # set_power(True)がFalseを返したらsys.exit(1)
 
-        rospy.on_shutdown(self.set_power)
+        rospy.on_shutdown(self.set_power) # シャットダウン時にsetpower(False)を実行。モーター電源OFF
         self.sub_raw = rospy.Subscriber('motor_raw', MotorFreqs, self.callback_raw_freq)
         self.sub_cmd_vel = rospy.Subscriber('cmd_vel', Twist, self.callback_cmd_vel)
-
-        self.last_time = rospy.Time.now()
-        self.using_cmd_vel = False
+        # サブスクライバの立ち上げ:rospy.Subscriber("トピック名", "型","コールバック関数")
+        self.last_time = rospy.Time.now()# 現在時刻の取得
+        self.using_cmd_vel = False using_cmd_vel: 
 
     def set_power(self,onoff=False):
         en = "/dev/rtmotoren0"
@@ -37,17 +37,17 @@ class Motor():
                  open("/dev/rtmotor_raw_r0",'w') as rf:
                 lf.write(str(int(round(left_hz))) + "\n")
                 rf.write(str(int(round(right_hz))) + "\n")
+
         except:
-            rospy.logerr("cannot write to rtmotor_raw_*")
+            rospy.logerr("cannot write to rtmotor_law*")
 
     def callback_raw_freq(self,message):
         self.set_raw_freq(message.left_hz,message.right_hz)
 
-    def callback_cmd_vel(self,message):
-        forward_hz = 80000.0*message.linear.x/(9*math.pi)
+    def callback_cmd_vel(self,mesage):
+        forward_hz = 80000.0*message.liner.x/(9*math.pi)
         rot_hz = 400.0*message.angular.z/math.pi
         self.set_raw_freq(forward_hz-rot_hz, forward_hz+rot_hz)
-
         self.using_cmd_vel = True
         self.last_time = rospy.Time.now()
 
@@ -61,7 +61,3 @@ if __name__ == '__main__':
             m.set_raw_freq(0,0)
             m.using_cmd_vel = False
         rate.sleep()
-
-# Copyright 2016 Ryuichi Ueda
-# Released under the BSD License.
-# To make line numbers be identical with the book, this statement is written here. Don't move it to the header.
