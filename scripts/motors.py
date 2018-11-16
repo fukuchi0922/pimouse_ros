@@ -13,7 +13,7 @@ class Motor():
         self.sub_cmd_vel = rospy.Subscriber('cmd_vel', Twist, self.callback_cmd_vel)
         # サブスクライバの立ち上げ:rospy.Subscriber("トピック名", "型","コールバック関数")
         self.last_time = rospy.Time.now()# 現在時刻の取得
-        self.using_cmd_vel = False using_cmd_vel: 
+        self.using_cmd_vel = False 
 
     def set_power(self,onoff=False):
         en = "/dev/rtmotoren0"
