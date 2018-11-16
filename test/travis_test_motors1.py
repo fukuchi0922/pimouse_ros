@@ -40,10 +40,10 @@ class MotorTest(unittest.TestCase):
         self.file_check("rtmotor_raw_r0",600,"wrong right value from cmd_vel")
 
         time.sleep(0.1)
-        # self.file_check("rtmotor_raw_r0",0,"dont stop after 1[s]")
-        # self.file_check("rtmotor_raw_l0",0,"dont stop after 1[s]")
+        self.file_check("rtmotor_raw_r0",0,"dont stop after 1[s]")
+        self.file_check("rtmotor_raw_l0",0,"dont stop after 1[s]")
 
 if __name__ == '__main__':
     time.sleep(3)
     rospy.init_node('travis_test_motors')
-    # rostest.rosrun('pimouse_ros','travis_test_motors', MotorTest)
+    rostest.rosrun('pimouse_ros','travis_test_motors', MotorTest)
