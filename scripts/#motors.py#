@@ -20,7 +20,7 @@ class Motor():
         self.using_cmd_vel = False
         self.srv_tm = rospy.Service('Timed_motion', TimedMotion, self.callback_tm)
 
-    def set_power(self,onoff=False):
+        def set_power(self,onoff=False):
         en = "/dev/rtmotoren0"
         try:
             with open(en,'w') as f:
