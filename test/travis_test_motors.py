@@ -12,6 +12,7 @@ class MotorTest(unittest.TestCase):
     def setUp(self):
         rospy.wait_for_service('/motor_on')
         rospy.wait_for_service('/motor_off')
+        rospy.wait_for_service('timed_motion')
         on = rospy.ServiceProxy('/motor_on', Trigger)
         ret = on()
     def file_check(self,dev,value,message):
