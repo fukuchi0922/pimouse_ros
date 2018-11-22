@@ -19,7 +19,7 @@ class Motor():
         self.last_time = rospy.Time.now()# 現在時刻の取得
         self.using_cmd_vel = False
         self.srv_tm = rospy.Service('Timed_motion', TimedMotion, self.callback_tm)
-
+        
     def set_power(self,onoff=False):
         en = "/dev/rtmotoren0"
         try:
@@ -64,6 +64,7 @@ class Motor():
 
     def callback_on(self,message): return self.onoff_response(True)
     def callback_off(self,message): return self.onoff_response(False)
+
     def callback_tm(self,message):
         if not self.is_on:
             rospy.ligerr("not enpowered")
@@ -79,7 +80,7 @@ class Motor():
             return False
 
         return True
-    
+
 if __name__ == '__main__':
     rospy.init_node('motors')
     m = Motor()
