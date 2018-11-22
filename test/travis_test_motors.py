@@ -15,6 +15,7 @@ class MotorTest(unittest.TestCase):
         rospy.wait_for_service('timed_motion')
         on = rospy.ServiceProxy('/motor_on', Trigger)
         ret = on()
+        
     def file_check(self,dev,value,message):
         with open("/dev/" + dev,"r") as f:
             self.assertEqual(f.readline(),str(value)+"\n",message)
